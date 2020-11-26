@@ -6,7 +6,7 @@ import { ViewFixturesComponent } from './view-fixtures/view-fixtures.component';
 import { 
   RoleGuardService as RoleGuard 
 } from './services/role-guard.service';
-import { ViewTeamMembersComponent } from './view-team-members/view-team-members.component';
+import { ViewTeamMembers2Component } from './view-team-members2/view-team-members2.component';
 
 const routes: Routes = [
 
@@ -28,7 +28,7 @@ const routes: Routes = [
   },
   {
     path: 'viewTeamMembers',
-    component: ViewTeamMembersComponent,
+    component: ViewTeamMembers2Component,
   }
 ];
 

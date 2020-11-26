@@ -165,3 +165,4 @@ E:\Uni\Practise Challenge\BasketBall\BasketBall\bin\Debug\netcoreapp3.1\Newtonso
 E:\Uni\Practise Challenge\BasketBall\BasketBall\obj\Debug\netcoreapp3.1\BasketBall.csproj.CoreCompileInputs.cache
 E:\Uni\Practise Challenge\BasketBall\BasketBall\obj\Debug\netcoreapp3.1\BasketBall.MvcApplicationPartsAssemblyInfo.cs
 E:\Uni\Practise Challenge\BasketBall\BasketBall\obj\Debug\netcoreapp3.1\BasketBall.MvcApplicationPartsAssemblyInfo.cache
+E:\Uni\Practise Challenge\BasketBall\BasketBall\bin\Debug\netcoreapp3.1\Properties\ServiceDependencies\BasketBall20201126132458 - Web Deploy\profile.arm.json

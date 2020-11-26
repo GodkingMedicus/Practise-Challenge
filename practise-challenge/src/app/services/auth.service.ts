@@ -11,7 +11,8 @@ import { TeamMember } from '../models/teamMember';
 })
 export class AuthService {
 
-  apiURL = "https://localhost:5001/api";
+  //apiURL = "https://localhost:5001/api";
+  apiURL = "https://basketball20201126132458.azurewebsites.net";
   loggedIn: BehaviorSubject<boolean>;
   isAuthorized: BehaviorSubject<boolean>;
 
@@ -53,7 +54,7 @@ export class AuthService {
   }
 
   signUp(credentials: TeamMember) {
-    credentials.role = "test";
+    credentials.role = "UnAuthorized";
     credentials.Authorized = true;
 
     return new Promise((resolve, reject) => {

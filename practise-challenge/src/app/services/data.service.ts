@@ -8,7 +8,8 @@ import { TeamMember } from '../models/teamMember';
 })
 export class DataService {
 
-  apiURL = "https://localhost:5001/api";
+  //apiURL = "https://localhost:5001/api";
+  apiURL = "https://basketball20201126132458.azurewebsites.net";
   passFixture: Fixture;
 
   constructor(private _http: HttpClient) { }

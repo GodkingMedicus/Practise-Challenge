@@ -20,13 +20,12 @@ export class RoleGuardService implements CanActivate {
     // on the data property
     const authorized = route.data.authorized;
     const tokenPayload = this.jwtHelper.decodeToken(localStorage.getItem('Authorization'));
-
-    if (tokenPayload.Roleid !== authorized) {
+    
+    if (tokenPayload.Authorized == authorized) {
       console.log(false);
       return false;
     }
     console.log(true);
     return true;
   }
-
 }

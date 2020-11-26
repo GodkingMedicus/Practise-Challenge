@@ -1,9 +1,5 @@
-<div class="container1">    
-    <main>
-     
-        <article>    
-<div class="wrapper">
-<form [formGroup]="form" class='form' #updateFixtureForm='ngForm' (ngSubmit)="updateFixture(updateFixture);">
+
+<form [formGroup]="form" class='form' #updateFixtureForm='ngForm' (ngSubmit)="updateFixture();">
                   
     <div class="form-group row">
       <label for="venue" class="col-sm-2 col-form-label">Venue</label>
@@ -32,7 +28,3 @@
 
     <input type='submit' class="submit" value='Update'/>
 </form>
-</div>
-</article>
-</main>    
-</div>

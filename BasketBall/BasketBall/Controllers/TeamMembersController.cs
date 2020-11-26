@@ -116,7 +116,7 @@ namespace BasketBall.Controllers
             }
 
             
-            if (login.Password == staff.SingleOrDefault().Password)
+            if (login.Password == staff.SingleOrDefault().Password && staff.SingleOrDefault().Role == "Authorized")
             {
                 var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("secret")));
                 var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);

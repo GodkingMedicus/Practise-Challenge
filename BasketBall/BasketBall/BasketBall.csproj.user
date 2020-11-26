@@ -11,6 +11,7 @@
     <WebStackScaffolding_DbContextTypeFullName>BasketBall.Models.testDBContext</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
     <ActiveDebugProfile>BasketBall</ActiveDebugProfile>
+    <NameOfLastUsedPublishProfile>BasketBall20201126132458 - Web Deploy</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
