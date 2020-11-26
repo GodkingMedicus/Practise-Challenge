@@ -1,0 +1,28 @@
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Venue</th>
+        <th>Date</th>
+        <th>Who Payed</th>
+        <th>Fees</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of fixtures">
+        <td>{{item.venue}}</td>
+        <td>{{item.gameDate}}</td>
+        <td>{{item.UserID}}</td>
+        <td>{{item.fees}}</td>
+        <td><a [routerLink]="['/updateFixture']" (click)="passFixture(item)"><button class="button">Edit</button></a></td>
+        <td><button class="button" (click)="deleteFixture(item)">Delete</button></td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="5">
+        </td>
+      </tr>
+    </tfoot>
+  </table>

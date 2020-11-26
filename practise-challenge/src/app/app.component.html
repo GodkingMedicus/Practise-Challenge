@@ -1,0 +1,11 @@
+
+<app-login *ngIf="!this.loggedIn"></app-login>
+<div *ngIf="this.loggedIn" class="container1">   
+      <main>
+          <article>
+            
+              <router-outlet> </router-outlet>
+
+          </article>
+      </main>      
+</div>

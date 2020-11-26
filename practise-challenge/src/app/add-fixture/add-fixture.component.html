@@ -1,0 +1,15 @@
+<p>Add Fixture</p>
+
+<form class="inputs" #fixtureForm="ngForm" (ngSubmit)="addFixture(fixtureForm.form);">
+
+    <input type="text" id="venue" placeholder="Venue" name="venue" ngModel #venueField="ngModel" required>
+        <div class="form-group row">
+            <div class="col-sm-10">
+              <mat-form-field class="col-sm-10">
+                <input class="form-control" matInput type="datetime-local" name="gameDate" ngModel #gameDateField="ngModel" required />
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>      
+            </div>
+          </div>
+    <button type="submit" class="submit-button">Submit</button>
+</form>
