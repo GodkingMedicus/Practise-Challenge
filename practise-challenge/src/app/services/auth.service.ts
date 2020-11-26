@@ -4,7 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { DataService } from './data.service';
-import { teamMember } from '../models/teamMember';
+import { TeamMember } from '../models/teamMember';
 
 @Injectable({
   providedIn: 'root'
@@ -52,10 +52,10 @@ export class AuthService {
     })
   }
 
-  signUp(credentials: teamMember) {
+  signUp(credentials: TeamMember) {
     credentials.role = "test";
     credentials.Authorized = true;
-    
+
     return new Promise((resolve, reject) => {
       this._http.post(this.apiURL + "/TeamMembers", credentials).subscribe(
         () => {

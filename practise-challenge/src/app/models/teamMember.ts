@@ -1,4 +1,5 @@
-export interface teamMember {
+export interface TeamMember {
+    userId: number;
     email: string;
     password: string;
     role: string;

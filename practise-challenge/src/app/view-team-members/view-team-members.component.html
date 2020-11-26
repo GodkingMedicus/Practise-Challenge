@@ -1,0 +1,25 @@
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>UserID</th>
+        <th>Email</th>
+        <th>Fees</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of teamMembers">
+        <td>{{item.userId}}</td>
+        <td>{{item.email}}</td>
+        <td>{{item.fees}}</td>
+        <td><button class="button" (click)="authMember(item, "Authorized")">Authorize</button></td>
+        <td><button class="button" (click)="authMember(item, "Rejected")">Reject</button></td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="5">
+        </td>
+      </tr>
+    </tfoot>
+  </table>

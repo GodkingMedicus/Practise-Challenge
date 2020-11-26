@@ -19,6 +19,7 @@ import { MatInputModule } from '@angular/material/input';
 import { NoopAnimationsModule, BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UpdateFixtureComponent } from './update-fixture/update-fixture.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ViewTeamMembersComponent } from './view-team-members/view-team-members.component';
 
 export function tokenGetter() {
   return JSON.parse(localStorage.getItem('Authorization'));
@@ -30,7 +31,8 @@ export function tokenGetter() {
     LoginComponent,
     AddFixtureComponent,
     ViewFixturesComponent,
-    UpdateFixtureComponent
+    UpdateFixtureComponent,
+    ViewTeamMembersComponent
   ],
   imports: [
     BrowserModule,

@@ -30,7 +30,7 @@ export class UpdateFixtureComponent implements OnInit {
     })
   }
 
-  updateFixture(form) {
+  updateFixture() {
     
     this.data.userId = this.form.value.userId;
     this.data.fees = this.form.value.fees;

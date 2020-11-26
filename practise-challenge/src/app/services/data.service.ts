@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { resolve } from 'dns';
 import { Fixture } from '../models/fixture';
+import { TeamMember } from '../models/teamMember';
 
 @Injectable({
   providedIn: 'root'
@@ -56,6 +56,25 @@ export class DataService {
         },
         err => {
           console.error("Error deleting Game")
+          reject(err);
+        })
+    })
+  }
+
+  getTeamMembers() {
+    return this._http.get<Fixture[]>(this.apiURL + "/TeamMembers");
+  }
+
+  updateMember(member: TeamMember, auth: string) {
+    member.role = auth;
+    return new Promise((resolve, reject) => {
+      this._http.put(this.apiURL + "/TeamMembers/" + member.userId, member).subscribe(
+        () => {
+          console.log("Game updated")
+          resolve();
+        },
+        err => {
+          console.error("Error updating Game")
           reject(err);
         })
     })

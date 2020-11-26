@@ -6,6 +6,7 @@ import { ViewFixturesComponent } from './view-fixtures/view-fixtures.component';
 import { 
   RoleGuardService as RoleGuard 
 } from './services/role-guard.service';
+import { ViewTeamMembersComponent } from './view-team-members/view-team-members.component';
 
 const routes: Routes = [
 
@@ -18,12 +19,16 @@ const routes: Routes = [
     component: AddFixtureComponent,
     canActivate: [RoleGuard], 
       data: { 
-        expectedRole: '1'
+        authorized: true
       }
   },
   {
     path: 'updateFixture',
     component: UpdateFixtureComponent,
+  },
+  {
+    path: 'viewTeamMembers',
+    component: ViewTeamMembersComponent,
   }
 ];
 
