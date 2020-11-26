@@ -7,6 +7,7 @@ import {
   RoleGuardService as RoleGuard 
 } from './services/role-guard.service';
 import { ViewTeamMembers2Component } from './view-team-members2/view-team-members2.component';
+import { ViewFutureGamesComponent } from './view-future-games/view-future-games.component';
 
 const routes: Routes = [
 
@@ -29,6 +30,10 @@ const routes: Routes = [
   {
     path: 'viewTeamMembers',
     component: ViewTeamMembers2Component,
+  },
+  {
+    path: 'viewFutureFixtures',
+    component: ViewFutureGamesComponent,
   }
 ];
 

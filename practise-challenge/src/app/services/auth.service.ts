@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { DataService } from './data.service';
 import { TeamMember } from '../models/teamMember';
+import { Fixture } from '../models/fixture';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ import { TeamMember } from '../models/teamMember';
 export class AuthService {
 
   //apiURL = "https://localhost:5001/api";
-  apiURL = "https://basketball20201126132458.azurewebsites.net";
+  apiURL = "https://basketball20201126132458.azurewebsites.net/api/";
   loggedIn: BehaviorSubject<boolean>;
   isAuthorized: BehaviorSubject<boolean>;
 
@@ -20,9 +21,11 @@ export class AuthService {
     this.loggedIn = new BehaviorSubject(null);
     this.isAuthorized = new BehaviorSubject(null);
     this.loggedIn.next(false);
-    if(this.isLoggedIn()) {
+    this.isAuthorized.next(false);
+    if(localStorage.getItem('LoggedIn') == "true") {
       this.loggedIn.next(true);
-      if(this.jwtHelper.decodeToken(localStorage.getItem('Authorization')).Authorized == true)
+      //if(this.jwtHelper.decodeToken(localStorage.getItem('Authorization')).Authorized == true)
+        if(localStorage.getItem('LoggedIn') == "true")
             this.isAuthorized.next(true);
           else
             this.isAuthorized.next(false);
@@ -33,7 +36,7 @@ export class AuthService {
 
   login(credentials: Login){
 
-    return new Promise((resolve, reject) => {
+    /* return new Promise((resolve, reject) => {
       this._http.post(this.apiURL + "/TeamMembers/login", credentials).subscribe(
         (token) => {
           console.log("Logged in")
@@ -50,12 +53,17 @@ export class AuthService {
           this.loggedIn.next(false);
           reject(err);
         });
-    })
+    }) */
+    localStorage.setItem('LoggedIn', "true");
+    this.loggedIn.next(true);
+    this.isAuthorized.next(true);
+    console.log(credentials.userId)
+    return this._http.get<TeamMember>(this.apiURL + "/TeamMembers/" + credentials.userId);
   }
 
   signUp(credentials: TeamMember) {
     credentials.role = "UnAuthorized";
-    credentials.Authorized = true;
+    credentials.authorized = true;
 
     return new Promise((resolve, reject) => {
       this._http.post(this.apiURL + "/TeamMembers", credentials).subscribe(

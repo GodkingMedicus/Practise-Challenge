@@ -20,6 +20,7 @@ import { NoopAnimationsModule, BrowserAnimationsModule } from '@angular/platform
 import { UpdateFixtureComponent } from './update-fixture/update-fixture.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ViewTeamMembers2Component } from './view-team-members2/view-team-members2.component';
+import { ViewFutureGamesComponent } from './view-future-games/view-future-games.component';
 
 export function tokenGetter() {
   return JSON.parse(localStorage.getItem('Authorization'));
@@ -32,7 +33,8 @@ export function tokenGetter() {
     AddFixtureComponent,
     ViewFixturesComponent,
     UpdateFixtureComponent,
-    ViewTeamMembers2Component
+    ViewTeamMembers2Component,
+    ViewFutureGamesComponent
   ],
   imports: [
     BrowserModule,

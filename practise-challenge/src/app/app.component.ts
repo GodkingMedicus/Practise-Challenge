@@ -21,4 +21,9 @@ export class AppComponent {
     })
   }
 
+  logout() {
+    localStorage.removeItem('Authorization');
+    localStorage.removeItem('LoggedIn');
+  }
+
 }

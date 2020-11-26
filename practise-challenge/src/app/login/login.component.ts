@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { TeamMember } from '../models/teamMember';
 import {AuthService} from '../services/auth.service';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-login',
@@ -10,13 +12,14 @@ export class LoginComponent implements OnInit {
 
   failed: boolean;
   err: string;
+  member: TeamMember;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private dataService: DataService) { }
 
   ngOnInit(): void {
   }
 
-  login(form) {
+  /* login(form) {
     console.log(form.value)
     this.authService.login(form.value).then()
       .catch((err) => {
@@ -26,6 +29,21 @@ export class LoginComponent implements OnInit {
       .finally(() => {
       });
     form.reset();
+  } */
+
+  login(form) {
+    this.authService.login(form.value).subscribe({
+      next: data => {
+        this.member = data;
+        console.log(data);
+        this.dataService.member = data;
+        if(this.member.authorized == true)
+          localStorage.setItem('Authorized', "true");
+      },
+      error: error => {
+        console.log(error);
+      }
+    })
   }
 
   signUp(form) {

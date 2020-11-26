@@ -1,15 +1,16 @@
-DROP TABLE IF EXISTS User;
 DROP TABLE IF EXISTS Game;
+DROP TABLE IF EXISTS TeamMember;
 
 GO
 
-CREATE TABLE User(
+CREATE TABLE TeamMember(
     UserID INT IDENTITY(1,1) NOT NULL,
     Email NVARCHAR(256) NOT NULL,
     -- [Password] BINARY(64 NOT NULL)
     Password NVARCHAR(64) NOT NULL,
-    Role NVARCHAR NOT NULL,
+    Role NVARCHAR(64) NOT NULL,
     Authorized BIT,
+    fees int,
     CONSTRAINT PK_User PRIMARY KEY (UserID),
     CONSTRAINT UQ_User UNIQUE (Email)
 )
@@ -18,7 +19,7 @@ CREATE TABLE Game(
     GameID INT IDENTITY(1,1) NOT NULL,
     GameDate DATETIME NOT NULL,
     Venue NVARCHAR(64) NOT NULL,
-    UserID INT NOT NULL,
-    CONSTRAINT PK_Game Primary KEY (GameID),
-    CONSTRAINT FK_Game_Patient FOREIGN KEY (UserID) REFERENCES User
+    UserID INT,
+    Fees INT,
+    CONSTRAINT PK_Game Primary KEY (GameID)
 )

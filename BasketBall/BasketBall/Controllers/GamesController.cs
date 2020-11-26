@@ -25,6 +25,13 @@ namespace BasketBall.Controllers
         public async Task<ActionResult<IEnumerable<Game>>> GetGames()
         {
             //return await _context.Games.ToListAsync();
+            return await _context.Games.Where(g => g.GameDate < DateTime.Now).ToListAsync();
+        }
+
+        // GET: api/Games
+        [HttpGet, Route("Future")]
+        public async Task<ActionResult<IEnumerable<Game>>> GetFutureGames()
+        {
             return await _context.Games.Where(g => g.GameDate > DateTime.Now).ToListAsync();
         }
 

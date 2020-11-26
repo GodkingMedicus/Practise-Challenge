@@ -89,62 +89,62 @@ namespace BasketBall.Controllers
             return CreatedAtAction("GetTeamMember", new { id = teamMember.UserId }, teamMember);
         }
 
-        [HttpPost, Route("login")]
-        public IActionResult Login(TeamMember login)
-        {
+        //[HttpPost, Route("login")]
+        //public IActionResult Login(TeamMember login)
+        //{
 
-            if (login == null)
-            {
-                return BadRequest(new { message = "Invalid client request" });
-            }
+        //    if (login == null)
+        //    {
+        //        return BadRequest(new { message = "Invalid client request" });
+        //    }
 
-            var staff = (from s in _context.TeamMembers
-                             //where s.Email == login.Email
-                         where s.Email == login.Email
-                         select new TeamMember
-                         {
-                             Email = s.Email,
-                             Password = s.Password,
-                             Authorized = s.Authorized,
-                             Role = s.Role
-                         }).ToList();
+        //    var staff = (from s in _context.TeamMembers
+        //                     //where s.Email == login.Email
+        //                 where s.Email == login.Email
+        //                 select new TeamMember
+        //                 {
+        //                     Email = s.Email,
+        //                     Password = s.Password,
+        //                     Authorized = s.Authorized,
+        //                     Role = s.Role
+        //                 }).ToList();
 
-            //Handle invalid logins
-            if (staff.Count == 0)
-            {
-                return BadRequest(new { message = "Username or Password is incorrect" });
-            }
+        //    //Handle invalid logins
+        //    if (staff.Count == 0)
+        //    {
+        //        return BadRequest(new { message = "Username or Password is incorrect" });
+        //    }
 
             
-            if (login.Password == staff.SingleOrDefault().Password && staff.SingleOrDefault().Role == "Authorized")
-            {
-                var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("secret")));
-                var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
+        //    if (login.Password == staff.SingleOrDefault().Password && staff.SingleOrDefault().Role == "Authorized")
+        //    {
+        //        var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("secret")));
+        //        var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
 
-                var claims = new Claim[] {
-                    //new Claim("Role", staff.FirstOrDefault().Role.ToString()),
-                    new Claim("Authorized", staff.FirstOrDefault().Authorized.ToString()),
-                    new Claim("Role", staff.FirstOrDefault().Role.ToString())
-                };
+        //        var claims = new Claim[] {
+        //            //new Claim("Role", staff.FirstOrDefault().Role.ToString()),
+        //            new Claim("Authorized", staff.FirstOrDefault().Authorized.ToString()),
+        //            new Claim("Role", staff.FirstOrDefault().Role.ToString())
+        //        };
 
-                var tokenOptions = new JwtSecurityToken(
-                    issuer: Environment.GetEnvironmentVariable("applicationUrl"),
-                    audience: Environment.GetEnvironmentVariable("applicationUrl"),
-                    claims: claims,
-                    expires: DateTime.Now.AddDays(5),
-                    signingCredentials: signinCredentials
-                );
+        //        var tokenOptions = new JwtSecurityToken(
+        //            issuer: Environment.GetEnvironmentVariable("applicationUrl"),
+        //            audience: Environment.GetEnvironmentVariable("applicationUrl"),
+        //            claims: claims,
+        //            expires: DateTime.Now.AddDays(5),
+        //            signingCredentials: signinCredentials
+        //        );
 
-                var tokenString = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
+        //        var tokenString = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
 
-                return Ok(new { Token = tokenString });
-            }
-            else
-            {
-                Console.WriteLine("Failed Login");
-                return Unauthorized();
-            }
-        }
+        //        return Ok(new { Token = tokenString });
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine("Failed Login");
+        //        return Unauthorized();
+        //    }
+        //}
         // DELETE: api/TeamMembers/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<TeamMember>> DeleteTeamMember(int id)

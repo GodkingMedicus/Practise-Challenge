@@ -1,6 +1,15 @@
 
 <app-login *ngIf="!this.loggedIn"></app-login>
 <div *ngIf="this.loggedIn" class="container1">   
+    <nav role="navigation" *ngIf="true">
+        <ul class="nav-items">
+            <a [routerLink]="'addFixture'"><li class="nav-link">Add Game</li></a>
+            <a [routerLink]="''"><li class="nav-link">View Past Games</li></a>
+            <a [routerLink]="'viewFutureFixtures'"><li class="nav-link">View Future Games</li></a>
+            <a [routerLink]="'viewTeamMembers'"><li class="nav-link">View Members</li></a>
+            <a [routerLink]="''"><li class="nav-link" (click)="logout()">Logout</li></a>
+        </ul>
+    </nav>
       <main>
           <article>
             

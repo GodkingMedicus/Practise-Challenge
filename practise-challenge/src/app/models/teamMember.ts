@@ -3,5 +3,5 @@ export interface TeamMember {
     email: string;
     password: string;
     role: string;
-    Authorized: boolean;
+    authorized: boolean;
 }

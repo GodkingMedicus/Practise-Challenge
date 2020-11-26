@@ -30,9 +30,6 @@ namespace BasketBall
             object p = services.AddControllers().AddNewtonsoftJson(options =>
             options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
-            //Add JWT Middleware when ready
-            JWT.JWTMiddleware.ConfigureJWT(services);
-
             services.AddDbContext<testDBContext>(opt => opt.UseSqlServer("Server=tcp:jaydentest.database.windows.net,1433;Initial Catalog=test-DB;Persist Security Info=False;User ID=minda;Password=Password123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"));
 
             services.AddControllers();

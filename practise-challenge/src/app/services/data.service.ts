@@ -9,8 +9,9 @@ import { TeamMember } from '../models/teamMember';
 export class DataService {
 
   //apiURL = "https://localhost:5001/api";
-  apiURL = "https://basketball20201126132458.azurewebsites.net";
+  apiURL = "https://basketball20201126132458.azurewebsites.net/api";
   passFixture: Fixture;
+  member: TeamMember;
 
   constructor(private _http: HttpClient) { }
 
@@ -31,6 +32,10 @@ export class DataService {
 
   getFixtures() {
     return this._http.get<Fixture[]>(this.apiURL + "/Games");
+  }
+
+  getFutureFixtures() {
+    return this._http.get<Fixture[]>(this.apiURL + "/Games/Future");
   }
 
   updateFixture(fixture: Fixture){

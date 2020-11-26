@@ -5,24 +5,24 @@ import {
   ActivatedRouteSnapshot
 } from '@angular/router';
 import { AuthService } from './auth.service';
-import { JwtHelperService } from '@auth0/angular-jwt';
+import { DataService } from './data.service';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class RoleGuardService implements CanActivate {
-  constructor(public auth: AuthService, private jwtHelper: JwtHelperService, public router: Router) {}
+  constructor(public auth: AuthService, public router: Router, public data: DataService) {}
 
   canActivate(route: ActivatedRouteSnapshot): boolean {
 
     // this will be passed from the route config
     // on the data property
     const authorized = route.data.authorized;
-    const tokenPayload = this.jwtHelper.decodeToken(localStorage.getItem('Authorization'));
+    const tokenPayload = localStorage.getItem('Authorization');
     
-    if (tokenPayload.Authorized == authorized) {
-      console.log(false);
+    if (tokenPayload == authorized) {
+        console.log(false);
       return false;
     }
     console.log(true);
